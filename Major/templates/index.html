@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Fake Photo Recognizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload a Image</h1>
+        <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Upload</button>
+        </form>
+        <div class="result-container">
+            <div id="image-preview" class="image-preview"></div>
+            <div id="result" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('upload-form').onsubmit = function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const emoji = data.result === 'Fake' ? '😡' : '😎';
+                const labelColor = data.result === 'Fake' ? 'red' : 'green';
+                
+                document.getElementById('result').innerHTML = `
+                    <h2>Prediction Result:</h2>
+                    <p class="prediction-label" style="color: ${labelColor};">${data.result}</p>
+                    <span class="prediction-emoji">${emoji}</span>
+                `;
+
+                const imageUrl = URL.createObjectURL(formData.get('file'));
+                document.getElementById('image-preview').innerHTML = `
+                    <h2>Uploaded Image:</h2>
+                    <img src="${imageUrl}" alt="Uploaded Image" />
+                `;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = '<p style="color: red;">An error occurred. Please try again.</p>';
+            });
+        };
+    </script>
+    
+    
+</body>
+</html>

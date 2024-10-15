@@ -1,0 +1,139 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+input[type="file"] {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+}
+
+button {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.result-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.result {
+    margin: 0 20px;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    border: 1px solid #ccc; 
+    flex: 1;
+    min-width: 125px;
+    text-align: left;
+}
+
+.prediction-label {
+    font-size: 24px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.image-preview {
+    margin: 0 20px;
+    flex: 1;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    
+}
+
+.image-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.prediction-label {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prediction-label.emoji-fake {
+    color: #dc3545; 
+}
+
+.prediction-label.emoji-real {
+    color: #28a745;
+}
+
+.prediction-label span {
+    font-size: 32px;
+    margin-left: 10px;
+}
+
+.result-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+#result, #image-preview {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    width: 45%;
+    text-align: center;
+}
+
+.prediction-label {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.prediction-emoji {
+    font-size: 50px;
+    display: block;
+    margin-top: 10px;
+}
+
+#image-preview img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+}
